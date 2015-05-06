@@ -19,7 +19,7 @@ class UDPClient {
   
       InetAddress IPAddress = InetAddress.getByName(serverHostname); 
       System.out.println ("Attemping to connect to " + IPAddress + 
-                          ") via UDP port 9876");
+                          ") via UDP port 21252");
   
       byte[] sendData = new byte[1024]; 
       byte[] receiveData = new byte[1024]; 
