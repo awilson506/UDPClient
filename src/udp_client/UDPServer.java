@@ -16,7 +16,7 @@ class UDPServer {
       while(true) 
         { 
   
-          receiveData = new byte[1024]; 
+          receiveData = new byte[16]; 
 
           DatagramPacket receivePacket = 
              new DatagramPacket(receiveData, receiveData.length); 
