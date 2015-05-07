@@ -1,9 +1,11 @@
-package udp_client;
+package client;
 
 import java.io.*;
 import java.net.*;
 import java.nio.ByteBuffer;
 import java.util.Scanner;
+
+import threads.PrintPage;
 
 class UDPClient {
 	public static void main(String args[]) throws Exception {
@@ -23,22 +25,61 @@ class UDPClient {
 
 			byte[] receiveData = new byte[1024];
 
-			System.out.print("Please enter a Web Server name: ");
+			//System.out.print("Please enter a Web Server name: ");
 			// read in the message to send
-			String sentence = in.nextLine();
-			System.out.print("Enter the timeout time in ms: ");
+			//String serverOne = in.nextLine();
+			//System.out.print("Enter the timeout time in ms: ");
 			// read in the timeout in ms
-			int timeout = in.nextInt();
+			int timeout = 10000; /*in.nextInt(); */
 
-			System.out.print("Enter the packet size: ");
+			//System.out.print("Enter the packet size: ");
 			// read in packet size
-			int packetSize = in.nextInt();
+			//int packetSize = in.nextInt();
 			// set the packet byte size
-			byte[] sendData = new byte[Math.min(packetSize, 1460)];
+			byte[] sendData = new byte[Math.min(1000 , 1460)];
 
-			getPage(sentence, packetSize);
+			//getPage(sentence, packetSize);
+			//*********************************************************************
+			
+			URL url;
+			InputStream is = null;
+			BufferedReader br;
+			int line;
 
-			sendData = sentence.getBytes();
+			try {
+				url = new URL("http://www.towson.edu" /*+ serverOne*/);
+				is = url.openStream(); // throws an IOException
+				br = new BufferedReader(new InputStreamReader(is));
+				
+				while (is.available() > 0 ) {
+					
+					for( int i = 0; i < sendData.length; i++){
+						
+							sendData[i] = (byte) is.read();
+							//System.out.print(new String(sendData, i,1));
+							
+					
+					}
+					new Thread(new PrintPage(sendData)).start();
+					
+				}
+			} catch (MalformedURLException mue) {
+				mue.printStackTrace();
+			} catch (IOException ioe) {
+				ioe.printStackTrace();
+			} finally {
+				try {
+					if (is != null)
+						is.close();
+				} catch (IOException ioe) {
+					// nothing to see here
+				}
+			}
+			
+			
+			
+
+			//sendData = sentence.getBytes();
 
 			System.out.println("Sending " + sendData.length
 					+ " bytes to server.");
@@ -79,32 +120,6 @@ class UDPClient {
 	}
 
 	public static void getPage(String pageUrl, int size) {
-		URL url;
-		InputStream is = null;
-		BufferedReader br;
-		String line;
-
-		try {
-			url = new URL("http://" + pageUrl);
-			is = url.openStream(); // throws an IOException
-			br = new BufferedReader(new InputStreamReader(is));
-			//ByteBuffer bbuf = ByteBuffer.allocate(size);
-
-			while ((line = br.readLine()) != null) {
-				//send response packets at a time
-				System.out.println(line);
-			}
-		} catch (MalformedURLException mue) {
-			mue.printStackTrace();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-		} finally {
-			try {
-				if (is != null)
-					is.close();
-			} catch (IOException ioe) {
-				// nothing to see here
-			}
-		}
+		
 	}
 }

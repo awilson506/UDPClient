@@ -1,4 +1,4 @@
-package udp_client;
+package server;
 
 import java.io.*; 
 import java.net.*; 
