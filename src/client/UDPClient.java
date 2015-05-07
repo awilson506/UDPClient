@@ -1,14 +1,9 @@
 package client;
 
-
-import java.awt.List;
-import server.UDPServer;
 import java.io.*;
 import java.net.*;
-import java.nio.ByteBuffer;
 import java.util.Scanner;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+
 
 import threads.PrintPage;
 import threads.SendPackets;
@@ -16,7 +11,9 @@ import threads.SendPackets;
 class UDPClient {
 	public static void main(String args[]) throws Exception {
 		
-		File file = new File("output.txt");
+		File file = new File("output-server.txt");
+		file.delete();
+		file = new File("output-client.txt");
 		file.delete();
 		try {
 			String serverHostname = new String("127.0.0.1");
@@ -66,7 +63,7 @@ class UDPClient {
 						// System.out.print(new String(sendData, i,1));
 
 					}
-					PrintPage p = new PrintPage(sendData);
+					PrintPage p = new PrintPage(sendData, "output-client.txt");
 					p.start();
 					p.join();
 					SendPackets sp = new SendPackets(sendData, IPAddress,
@@ -93,6 +90,7 @@ class UDPClient {
 		} catch (IOException ex) {
 			System.err.println(ex);
 		}
+		System.out.println("Done");
 
 	}
 }
