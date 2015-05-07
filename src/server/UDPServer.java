@@ -2,6 +2,10 @@ package server;
 
 import java.io.*; 
 import java.net.*; 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+
+import threads.PrintPage;
   
 public class UDPServer { 
 	
@@ -25,11 +29,14 @@ public class UDPServer {
           System.out.println ("Waiting for datagram packet");
 
           serverSocket.receive(receivePacket); 
-
+          //print the data from the server
+          
           String sentence = new String(receivePacket.getData()); 
   
           InetAddress IPAddress = receivePacket.getAddress(); 
-  
+          PrintPage p = new PrintPage(receivePacket.getData() , "output-server.txt");
+			p.start();
+			p.join();
           int port = receivePacket.getPort(); 
   
           System.out.println ("From: " + IPAddress + ":" + port);
@@ -39,7 +46,8 @@ public class UDPServer {
 
           sendData = capitalizedSentence.getBytes(); 
           packetsReceived += sendData.length;
-          System.out.println(packetsReceived + "***********************");
+          
+          sendData = convertToBytes(packetsReceived, ByteOrder.BIG_ENDIAN);
           DatagramPacket sendPacket = 
              new DatagramPacket(sendData, sendData.length, IPAddress, 
                                port); 
@@ -55,4 +63,10 @@ public class UDPServer {
       }
 
     } 
+  public static byte[] convertToBytes(int value, ByteOrder order)
+  {
+      ByteBuffer buffer = ByteBuffer.allocate(4); // in java, int takes 4 bytes.
+      buffer.order(order);
+      return buffer.putInt(value).array();
+  }
 }  

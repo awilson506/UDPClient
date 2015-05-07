@@ -12,14 +12,14 @@ public class Singleton {
         super();
     }
 
-    public synchronized void writeToFile(byte[] str) {
+    public synchronized void writeToFile(byte[] str, String fileName) {
     	//System.out.print("error000");
     			FileOutputStream fop = null;
     			File file;
     			
     			try {
     				
-    				file = new File("output.txt");
+    				file = new File(fileName);
     				
     				fop = new FileOutputStream(file.getAbsoluteFile(), true);
     				//FileLock lock = fop.getChannel().lock();
