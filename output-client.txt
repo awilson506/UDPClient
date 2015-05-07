@@ -484,19 +484,9 @@ For the last story on the list, use this format (the difference is the <p> tag w
         
         
         
-        <div class="eventlisting" >
-                  <div class="thedate">
-                    <div class="month">May</div>
-                    <div class="day">7</div>
-                  </div>
-                  <div class="eventinfo">
-                   <h3><a href="http://events.towson.edu/event/tu_jazz_orchestra#.VUPVEvlVhBc">TU Jazz Orchestra</a></h3>
-                    <p>8:15 p.m., Center for the Arts</p>
-                    <p>Come see the award-winning TU Jazz Orchestra perform selections from the 1930s to the present day.</p>
-        </div>
-        </div>
         
-        <div class= "eventlisting" style="border-top: 1px solid #000; padding-top: 10px;">
+        
+        <div class= "eventlisting" >
                   <div class="thedate">
                     <div class="month">May</div>
                     <div class="day">8</div>
@@ -505,6 +495,18 @@ For the last story on the list, use this format (the difference is the <p> tag w
                     <h3><a href= "http://events.towson.edu/event/pottery_sale#.VUPTKflVhBc">Pottery Sale</a></h3>
                     <p>3 - 9 p.m., Center for the Arts</p>
                     <p>Come to a pottery sale of faculty and student porcelain and clay sculptures.</p>
+        </div>
+        </div>
+        
+        <div class="eventlisting" style="border-top: 1px solid #000; padding-top: 10px;">
+                  <div class="thedate">
+                    <div class="month">May</div>
+                    <div class="day">16</div>
+                  </div>
+                  <div class="eventinfo">
+                   <h3><a href="http://events.towson.edu/event/annual_student_media_arts_festival_screenings_and_awards#.VUvLhflVhBc">Media Arts Festival</a></h3>
+                    <p>7 p.m., Van Bokkelen Auditorium</p>
+                    <p>Come see award winning student media arts projects at the Media Arts Festival.</p>
         </div>
         </div>
         
@@ -609,10 +611,10 @@ doctoral programs. Find yours.</h4>
                         
                         <div class="ca-item ca-item-4">
 						<div class="ca-item-main">
-						<a href="http://www.towson.edu/hireatiger">	<img src="/main/homeparts/images/promoters/Hire_me_promoter.jpg" width=154 height=134 border=0 alt="Hire a Tiger"></a>
-							<a href="http://www.towson.edu/hireatiger">
-						  <h3>Hire a Tiger</h3></a>
-							<h4>Support your alma mater by hiring TU students and alumni.</h4>		
+						<a href="http://www.towson.edu/president/presidentialsearch/index.asp">	<img src="/main/homeparts/images/promoters/PrezSearch_promo1.jpg" width=154 height=134 border=0 alt="Presidential Search"></a>
+							<a href="http://www.towson.edu/president/presidentialsearch/index.asp">
+						  <h3>Presidential Search</h3></a>
+							<h4>The search for Towson Universityâ€™s 14th president.</h4>		
 						</div>
 						</div>
                         
@@ -862,4 +864,4 @@ _qevents.push(
 
 </body>
 </html>
-ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ

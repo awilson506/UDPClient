@@ -4,22 +4,23 @@ import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 
-
+import server.UDPServer;
 import threads.PrintPage;
 import threads.SendPackets;
 
-class UDPClient {
-	
+public class UDPClient {
+
 	public static int ackCount = 0;
-	
+
 	public static void main(String args[]) throws Exception {
-		
+
 		File file = new File("output-server.txt");
 		file.delete();
 		file = new File("output-client.txt");
 		file.delete();
 		long startTime = 0;
-		
+		int packetSize = 0;
+
 		try {
 			String serverHostname = new String("127.0.0.1");
 
@@ -32,31 +33,28 @@ class UDPClient {
 			System.out.println("Attemping to connect to " + IPAddress
 					+ ") via UDP port 21252");
 
-			
-
-			// System.out.print("Please enter a Web Server name: ");
+			System.out.print("Please enter a Web Server name: ");
 			// read in the message to send
-			// String serverOne = in.nextLine();
-			// System.out.print("Enter the timeout time in ms: ");
+			String serverOne = in.nextLine();
+			System.out.print("Enter the timeout time in ms: ");
 			// read in the timeout in ms
-			int timeout = 10000; /* in.nextInt(); */
+			int timeout = in.nextInt();
 
-			// System.out.print("Enter the packet size: ");
+			System.out.print("Enter the packet size: ");
 			// read in packet size
-			// int packetSize = in.nextInt();
+			packetSize = in.nextInt();
 			// set the packet byte size
-			byte[] sendData = new byte[Math.min(1000, 1460)];
-			byte[] receiveData = new byte[Math.min(1000, 1460)];
+			byte[] sendData = new byte[Math.min(packetSize, 1460)];
+			byte[] receiveData = new byte[Math.min(packetSize, 1460)];
 
-			// getPage(sentence, packetSize);
 			// *********************************************************************
 
 			URL url;
 			InputStream is = null;
 			BufferedReader br;
-			startTime = System.nanoTime();	
+			startTime = System.nanoTime();
 			try {
-				url = new URL("http://www.towson.edu" /* + serverOne */);
+				url = new URL("http://" + serverOne);
 				is = url.openStream(); // throws an IOException
 				br = new BufferedReader(new InputStreamReader(is));
 				Thread thread;
@@ -74,7 +72,9 @@ class UDPClient {
 					SendPackets sp = new SendPackets(sendData, IPAddress,
 							receiveData, timeout);
 					sp.start();
+
 					sp.join();
+					ackCount = sp.getACK();
 
 				}
 			} catch (MalformedURLException mue) {
@@ -97,10 +97,10 @@ class UDPClient {
 		}
 		long endTime = System.nanoTime();
 		long duration = (endTime - startTime);
-		System.out.println("Duration: " + duration/1000000 + " ms");
-		System.out.println("Done");
-		System.out.println(ackCount);
+		System.out.println("DONE");
+		System.out.println("Total Time: " + duration / 1000000 + " ms");
+		System.out.println("Packets received: " + ackCount);
 
 	}
-	
+
 }
