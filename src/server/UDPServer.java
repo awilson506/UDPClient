@@ -31,12 +31,12 @@ class UDPServer {
   
           int port = receivePacket.getPort(); 
   
-          //System.out.println ("From: " + IPAddress + ":" + port);
-          //System.out.println ("Message: " + sentence);
+          System.out.println ("From: " + IPAddress + ":" + port);
+          System.out.println ("Message: " + sentence);
 
-          //String capitalizedSentence = sentence.toUpperCase(); 
+          String capitalizedSentence = sentence; 
 
-          //sendData = capitalizedSentence.getBytes(); 
+          sendData = capitalizedSentence.getBytes(); 
   
           DatagramPacket sendPacket = 
              new DatagramPacket(sendData, sendData.length, IPAddress, 

@@ -38,10 +38,6 @@ public class Singleton {
     				
     				fop.flush();
     				fop.close();
-    	 
-    				System.out.println("Done");
-    			
-    			
     				
     			} catch (IOException e) {
     				// TODO Auto-generated catch block
