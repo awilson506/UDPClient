@@ -3,20 +3,21 @@ package server;
 import java.io.*; 
 import java.net.*; 
   
-class UDPServer { 
+public class UDPServer { 
+	
   public static void main(String args[]) throws Exception 
     { 
      try
      { 
       DatagramSocket serverSocket = new DatagramSocket(21252); 
       Integer packetsReceived = 0;
-      byte[] receiveData = new byte[1024]; 
+      
       
   
       while(true) 
         { 
   
-          receiveData = new byte[1024]; 
+    	  byte[] receiveData = new byte[Math.min(1000, 1460)]; 
 
           DatagramPacket receivePacket = 
              new DatagramPacket(receiveData, receiveData.length); 

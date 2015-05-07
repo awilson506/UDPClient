@@ -1,6 +1,8 @@
 package client;
 
+
 import java.awt.List;
+import server.UDPServer;
 import java.io.*;
 import java.net.*;
 import java.nio.ByteBuffer;
@@ -13,6 +15,7 @@ import threads.SendPackets;
 
 class UDPClient {
 	public static void main(String args[]) throws Exception {
+		
 		File file = new File("output.txt");
 		file.delete();
 		try {
@@ -27,7 +30,7 @@ class UDPClient {
 			System.out.println("Attemping to connect to " + IPAddress
 					+ ") via UDP port 21252");
 
-			byte[] receiveData = new byte[1024];
+			
 
 			// System.out.print("Please enter a Web Server name: ");
 			// read in the message to send
@@ -41,6 +44,7 @@ class UDPClient {
 			// int packetSize = in.nextInt();
 			// set the packet byte size
 			byte[] sendData = new byte[Math.min(1000, 1460)];
+			byte[] receiveData = new byte[Math.min(1000, 1460)];
 
 			// getPage(sentence, packetSize);
 			// *********************************************************************
