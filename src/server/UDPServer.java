@@ -9,9 +9,9 @@ class UDPServer {
      try
      { 
       DatagramSocket serverSocket = new DatagramSocket(21252); 
-  
+      Integer packetsReceived = 0;
       byte[] receiveData = new byte[1024]; 
-      byte[] sendData  = new byte[1024]; 
+      
   
       while(true) 
         { 
@@ -20,7 +20,7 @@ class UDPServer {
 
           DatagramPacket receivePacket = 
              new DatagramPacket(receiveData, receiveData.length); 
-
+          byte[] sendData  = new byte[Math.min(receiveData.length, 1460)]; 
           System.out.println ("Waiting for datagram packet");
 
           serverSocket.receive(receivePacket); 
@@ -37,7 +37,8 @@ class UDPServer {
           String capitalizedSentence = sentence; 
 
           sendData = capitalizedSentence.getBytes(); 
-  
+          packetsReceived += sendData.length;
+          System.out.println(packetsReceived + "***********************");
           DatagramPacket sendPacket = 
              new DatagramPacket(sendData, sendData.length, IPAddress, 
                                port); 
