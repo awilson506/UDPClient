@@ -1,26 +1,27 @@
-package udp_client;
+package server;
 
 import java.io.*; 
 import java.net.*; 
   
-class UDPServer { 
+public class UDPServer { 
+	
   public static void main(String args[]) throws Exception 
     { 
      try
      { 
       DatagramSocket serverSocket = new DatagramSocket(21252); 
-  
-      byte[] receiveData = new byte[1024]; 
-      byte[] sendData  = new byte[1024]; 
+      Integer packetsReceived = 0;
+      
+      
   
       while(true) 
         { 
   
-          receiveData = new byte[1024]; 
+    	  byte[] receiveData = new byte[Math.min(1000, 1460)]; 
 
           DatagramPacket receivePacket = 
              new DatagramPacket(receiveData, receiveData.length); 
-
+          byte[] sendData  = new byte[Math.min(receiveData.length, 1460)]; 
           System.out.println ("Waiting for datagram packet");
 
           serverSocket.receive(receivePacket); 
@@ -34,10 +35,11 @@ class UDPServer {
           System.out.println ("From: " + IPAddress + ":" + port);
           System.out.println ("Message: " + sentence);
 
-          String capitalizedSentence = sentence.toUpperCase(); 
+          String capitalizedSentence = sentence; 
 
           sendData = capitalizedSentence.getBytes(); 
-  
+          packetsReceived += sendData.length;
+          System.out.println(packetsReceived + "***********************");
           DatagramPacket sendPacket = 
              new DatagramPacket(sendData, sendData.length, IPAddress, 
                                port); 
