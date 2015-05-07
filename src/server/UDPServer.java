@@ -16,7 +16,7 @@ class UDPServer {
       while(true) 
         { 
   
-          receiveData = new byte[16]; 
+          receiveData = new byte[1024]; 
 
           DatagramPacket receivePacket = 
              new DatagramPacket(receiveData, receiveData.length); 
@@ -31,12 +31,12 @@ class UDPServer {
   
           int port = receivePacket.getPort(); 
   
-          System.out.println ("From: " + IPAddress + ":" + port);
-          System.out.println ("Message: " + sentence);
+          //System.out.println ("From: " + IPAddress + ":" + port);
+          //System.out.println ("Message: " + sentence);
 
-          String capitalizedSentence = sentence.toUpperCase(); 
+          //String capitalizedSentence = sentence.toUpperCase(); 
 
-          sendData = capitalizedSentence.getBytes(); 
+          //sendData = capitalizedSentence.getBytes(); 
   
           DatagramPacket sendPacket = 
              new DatagramPacket(sendData, sendData.length, IPAddress, 

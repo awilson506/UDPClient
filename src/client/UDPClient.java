@@ -1,9 +1,12 @@
 package client;
 
+import java.awt.List;
 import java.io.*;
 import java.net.*;
 import java.nio.ByteBuffer;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import threads.PrintPage;
 
@@ -44,13 +47,13 @@ class UDPClient {
 			URL url;
 			InputStream is = null;
 			BufferedReader br;
-			int line;
+			
 
 			try {
 				url = new URL("http://www.towson.edu" /*+ serverOne*/);
 				is = url.openStream(); // throws an IOException
 				br = new BufferedReader(new InputStreamReader(is));
-				
+				Thread thread;
 				while (is.available() > 0 ) {
 					
 					for( int i = 0; i < sendData.length; i++){
@@ -60,7 +63,11 @@ class UDPClient {
 							
 					
 					}
-					new Thread(new PrintPage(sendData)).start();
+					PrintPage p = new PrintPage(sendData);
+					p.start();
+					p.join();
+					
+					
 					
 				}
 			} catch (MalformedURLException mue) {

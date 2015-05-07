@@ -12,7 +12,7 @@ public class Singleton {
         super();
     }
 
-    public synchronized void writeToFile(byte str) {
+    public synchronized void writeToFile(byte[] str) {
     	//System.out.print("error000");
     			FileOutputStream fop = null;
     			File file;
