@@ -15,6 +15,7 @@ public class SendPackets extends Thread{
 	private byte[] receiveData;
 	private InetAddress IPAddress;
 	private int timeout;
+	
 
 
 	public SendPackets(byte[] sendData, InetAddress IPAddress, byte[] receiveData, int timeout){
@@ -47,7 +48,7 @@ public class SendPackets extends Thread{
 			try {
 				clientSocket.receive(receivePacket);
 				//String modifiedSentence = new String(receivePacket.getData());
-				int test = constructIntFromByteArrayUsingByteBuffer(receivePacket.getData(),ByteOrder.BIG_ENDIAN);
+				int test = constructToInt(receivePacket.getData(),ByteOrder.BIG_ENDIAN);
 				InetAddress returnIPAddress = receivePacket.getAddress();
 
 				int port = receivePacket.getPort();
@@ -56,7 +57,7 @@ public class SendPackets extends Thread{
 						+ port);
 				System.out.println("ACK: " + test);
 				clientSocket.close();
-				System.out.println("----------------------");
+				System.out.println("------------------------");
 			} catch (SocketTimeoutException ste) {
 				//try three times need to loop this thread and so something here if we're at count 3
 				System.out.println("Timeout Occurred: Packet assumed lost");
@@ -71,7 +72,7 @@ public class SendPackets extends Thread{
 	
 	
 	}
-	public static int constructIntFromByteArrayUsingByteBuffer(byte[] byteArray, ByteOrder order)
+	public static int constructToInt(byte[] byteArray, ByteOrder order)
     {
         ByteBuffer buffer = ByteBuffer.wrap(byteArray);
         buffer.order(order);

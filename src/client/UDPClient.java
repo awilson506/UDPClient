@@ -9,12 +9,17 @@ import threads.PrintPage;
 import threads.SendPackets;
 
 class UDPClient {
+	
+	public static int ackCount = 0;
+	
 	public static void main(String args[]) throws Exception {
 		
 		File file = new File("output-server.txt");
 		file.delete();
 		file = new File("output-client.txt");
 		file.delete();
+		long startTime = 0;
+		
 		try {
 			String serverHostname = new String("127.0.0.1");
 
@@ -49,7 +54,7 @@ class UDPClient {
 			URL url;
 			InputStream is = null;
 			BufferedReader br;
-
+			startTime = System.nanoTime();	
 			try {
 				url = new URL("http://www.towson.edu" /* + serverOne */);
 				is = url.openStream(); // throws an IOException
@@ -90,7 +95,12 @@ class UDPClient {
 		} catch (IOException ex) {
 			System.err.println(ex);
 		}
+		long endTime = System.nanoTime();
+		long duration = (endTime - startTime);
+		System.out.println("Duration: " + duration/1000000 + " ms");
 		System.out.println("Done");
+		System.out.println(ackCount);
 
 	}
+	
 }
