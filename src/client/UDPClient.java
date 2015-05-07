@@ -3,8 +3,6 @@ package client;
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
-
-import server.UDPServer;
 import threads.PrintPage;
 import threads.SendPackets;
 
@@ -57,14 +55,11 @@ public class UDPClient {
 				url = new URL("http://" + serverOne);
 				is = url.openStream(); // throws an IOException
 				br = new BufferedReader(new InputStreamReader(is));
-				Thread thread;
+				
 				while (is.available() > 0) {
 
 					for (int i = 0; i < sendData.length; i++) {
-
 						sendData[i] = (byte) is.read();
-						// System.out.print(new String(sendData, i,1));
-
 					}
 					PrintPage p = new PrintPage(sendData, "output-client.txt");
 					p.start();
@@ -75,7 +70,6 @@ public class UDPClient {
 
 					sp.join();
 					ackCount = sp.getACK();
-
 				}
 			} catch (MalformedURLException mue) {
 				mue.printStackTrace();
@@ -92,9 +86,8 @@ public class UDPClient {
 
 		} catch (UnknownHostException ex) {
 			System.err.println(ex);
-		} catch (IOException ex) {
-			System.err.println(ex);
-		}
+		} 
+		
 		long endTime = System.nanoTime();
 		long duration = (endTime - startTime);
 		System.out.println("DONE");

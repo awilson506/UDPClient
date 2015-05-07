@@ -1,9 +1,5 @@
 package server;
 
-import java.io.*;
-
-import client.UDPClient;
-
 import java.net.*;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -27,7 +23,7 @@ public class UDPServer {
 				DatagramPacket receivePacket = new DatagramPacket(receiveData,
 						receiveData.length);
 
-				System.out.println("Waiting for datagram packet");
+				System.out.println("Waiting packets...");
 
 				serverSocket.receive(receivePacket);
 				// print the data from the server
@@ -46,9 +42,6 @@ public class UDPServer {
 				p.start();
 				p.join();
 				int port = receivePacket.getPort();
-
-				System.out.println("From: " + IPAddress + ":" + port);
-				//System.out.println("Message: " + sentence);
 
 				String capitalizedSentence = sentence;
 
@@ -71,8 +64,7 @@ public class UDPServer {
 	}
 
 	public static byte[] convertToBytes(int value, ByteOrder order) {
-		ByteBuffer buffer = ByteBuffer.allocate(4); // in java, int takes 4
-													// bytes.
+		ByteBuffer buffer = ByteBuffer.allocate(4); 
 		buffer.order(order);
 		return buffer.putInt(value).array();
 	}
